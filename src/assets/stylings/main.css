@@ -1,0 +1,287 @@
+:root {
+    --sky-blue: #03C7D7;
+    --sky-blue-light: #B9F7FC;
+    --purple: #8E04D4;
+    --purple-light: #F5E1FE;
+    --purple-dark: hsl(281, 94%, 16%);
+    --pink: #E300FE;
+    --pink-light: #FDEBFF;
+    --white: #FFFFFF;
+}
+body {
+    overflow-x: hidden;
+    background-color: #F8EBFF;
+}
+.ca-gradient-i {
+    background: rgb(193,19,247);
+    background: -moz-linear-gradient(90deg, rgba(193,19,247,1) 0%, rgba(2,213,209,1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(193,19,247,1) 0%, rgba(2,213,209,1) 100%);
+    background: linear-gradient(90deg, rgba(193,19,247,1) 0%, rgba(2,213,209,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#c113f7",endColorstr="#02d5d1",GradientType=1);
+}
+.ca-bg-purple {
+    background-color: var(--purple);
+}
+.ca-bg-light-purple {
+    background-color: var(--purple-light);
+}
+.ca-bg-dark-purple {
+    background-color: var(--purple-dark);
+}
+.ca-bg-blue {
+    background-color: var(--sky-blue);
+}
+.ca-bg-light-blue {
+    background-color: var(--sky-blue-light);
+}
+.ca-bg-pink {
+    background-color: var(--pink);
+}
+.ca-bg-light-pink {
+    background-color: var(--pink-light);
+}
+.ca-text-purple {
+    color: var(--purple);
+}
+.ca-text-dark-purple {
+    color: var(--purple-dark);
+}
+.ca-btn{
+    padding: 17.6px 28px;
+}
+.ca-animated {
+    transition: .2s;
+}
+.ca-btn:hover .ca-animated {
+    margin-right: 5.2px;
+}
+.ca-partners-holder {
+    position: relative;
+    z-index: 2;
+    transform: rotate(2.4deg) scale(1.12);
+}
+.ca-course-card:nth-child(1) {
+    background-color: var(--purple);
+}
+.ca-course-card:nth-child(2) {
+    background-color: var(--sky-blue);
+    transform: rotate(4deg);
+}
+.ca-course-card:nth-child(3) {
+    background: rgb(193,19,247);
+    background: -moz-linear-gradient(90deg, rgba(193,19,247,1) 0%, rgba(2,213,209,1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(193,19,247,1) 0%, rgba(2,213,209,1) 100%);
+    background: linear-gradient(90deg, rgba(193,19,247,1) 0%, rgba(2,213,209,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#c113f7",endColorstr="#02d5d1",GradientType=1);
+    position: relative;
+    z-index: 1;
+}
+swiper-slide {
+    width: 360px;
+    transition: 1.2s;
+}
+/* Swiper Stylings */
+/* .swiper-slide-active {
+    max-width: 50%;
+    width: 100%;
+} */
+.ca-testimonial-card {
+    background-color: #FFFFFF;
+    padding: 2rem;
+}
+.ca-testimonial-card .profile {
+    width: 32px;
+    height: 32px;
+}
+.ca-testimonial-card .testimony-box {
+    padding: 1rem;
+    background-color: var(--purple-light);
+    color: var(--purple-dark);
+}
+/* .swiper-slide-active .ca-testimonial-card {
+    background-color: transparent;
+    padding: 0;
+}
+.swiper-slide-active .ca-testimonial-card .profile {
+    width: 44px;
+    height: 44px;
+}
+.swiper-slide-active .ca-testimonial-card .year {
+    display: none;
+}
+.swiper-slide-active .ca-testimonial-card .testimony-box {
+    background-color: transparent;
+    font-size: 20px;
+    padding: 0;
+    font-weight: 700;
+}
+.swiper-slide-active .ca-testimonial-card .testimony-box p {
+    line-height: 2rem;
+    width: 80%;
+} */
+.xui-accordion-header {
+    background-color: var(--purple-light);
+}
+.ca-why-us-section {
+    position: absolute;
+    bottom: -200%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+}
+.ca-header-shape-i {
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    top: -150px;
+    right: -150px;
+    border-radius: 50%;
+    background-color: var(--purple-dark);
+}
+.ca-header-shape-ii {
+    width: 400px;
+    height: 400px;
+    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+    position: absolute;
+    top: -150px;
+    left: -150px;
+    background-color: var(--sky-blue);
+    transform: rotate(30deg);
+}
+.ca-header-shape-iii {
+    width: 400px;
+    height: 400px;
+    clip-path: polygon(
+        50% 0%, 60% 35%, 100% 35%, 68% 57%, 
+        79% 100%, 50% 75%, 21% 100%, 32% 57%, 
+        0% 35%, 40% 35%
+    );
+    position: absolute;
+    bottom: -150px;
+    left: -150px;
+    background-color: var(--pink);
+}
+.ca-header-shape-iv {
+    width: 400px;
+    height: 400px;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    position: absolute;
+    bottom: -150px;
+    right: -150px;
+    background-color: var(--purple);
+    transform: rotate(8deg);
+}
+.slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+.slide-track {
+    display: flex;
+    animation: scroll 40s linear infinite;
+}
+.slide {
+    width: 20%;
+    flex-shrink: 0;
+}
+.slide img {
+    width: 100%;
+    display: block;
+}
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+.ca-navbar {
+    height: 72px;
+    border-radius: 45px;
+    background-color: rgba(255, 255, 255, .8);
+    width: 60%;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    -webkit-backdrop-filter: blur(16px);
+    -o-backdrop-filter: blur(16px);
+    -moz-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    transition: .2s;
+}
+.ca-navbar .brand {
+    width: 160px;
+}
+.ca-navbar .links {
+    width: calc(100% - 160px);
+}
+.ca-navbar .links a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 14.4px;
+    padding: 3.2px 1.2px;
+}
+.ca-navbar .links a.cart {
+    position: relative;
+}
+.ca-navbar .links a.cart .cart-number {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--purple-dark);
+    color: var(--white);
+    position: absolute;
+    top: -4px;
+    right: -8px;
+    font-size: 9.2px;
+    font-weight: 700;
+}
+.ca-navbar .links a.action-btn {
+    background-color: var(--purple);
+    color: var(--pink-light);
+    border-radius: 40px;
+    padding: 12px 24px;
+    font-size: 13.6px;
+}
+/* Media Queries */
+@media screen and (max-width: 913px) {
+    .ca-header-shape-i,
+    .ca-header-shape-ii,
+    .ca-header-shape-iii,
+    .ca-header-shape-iv {
+        z-index: -1;
+        width: 150px;
+        height: 150px;
+    }
+    .ca-header-shape-i {
+        top: -50px;
+        right: -50px;
+    }
+    .ca-header-shape-ii {
+        top: -50px;
+        left: -50px;
+    }
+    .ca-header-shape-iii {
+        bottom: -50px;
+        left: -50px;
+    }
+    .ca-header-shape-iv {
+        bottom: -50px;
+        right: -50px;
+    }
+    swiper-slide {
+        width: 100%;
+    }
+    .ca-navbar {
+        width: calc(100% - 16px);
+        top: 8px;
+        left: 8px;
+    }
+    .ca-navbar .links .main {
+        position: fixed;
+        top: 0;
+        right: -100%;
+    }
+}
