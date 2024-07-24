@@ -40,7 +40,7 @@ const HomeHeader = () => {
         }, "<");
     });
     return (
-        <section className='xui-container xui-py-5 xui-lg-py-8 xui-pos-relative' ref={headerSection}>
+        <section className='xui-container xui-py-5 xui-lg-py-8 xui-pos-relative ca-header-section' ref={headerSection}>
             <div ref={shapeI} className='ca-header-shape-i'></div>
             <div ref={shapeII} className='ca-header-shape-ii'></div>
             <div ref={shapeIII} className='ca-header-shape-iii'></div>

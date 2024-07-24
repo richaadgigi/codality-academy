@@ -129,6 +129,10 @@ swiper-slide {
     transform: translateX(-50%);
     width: 100%;
 }
+.ca-header-section {
+    width: 100%;
+    overflow: hidden;
+}
 .ca-header-shape-i {
     width: 400px;
     height: 400px;
@@ -273,6 +277,9 @@ swiper-slide {
     }
     swiper-slide {
         width: 100%;
+    }
+    .ca-partners-holder {
+        transform: rotate(0deg) scale(1);
     }
     .ca-navbar {
         width: calc(100% - 16px);
