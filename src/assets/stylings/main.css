@@ -129,10 +129,6 @@ swiper-slide {
     transform: translateX(-50%);
     width: 100%;
 }
-.ca-header-section {
-    width: 100%;
-    /* overflow: hidden; */
-}
 .ca-header-shape-i {
     width: 400px;
     height: 400px;
@@ -261,6 +257,10 @@ body .main {
 }
 /* Media Queries */
 @media screen and (max-width: 913px) {
+    .ca-header-section {
+        width: 100%;
+        overflow: hidden;
+    }
     .ca-header-shape-i,
     .ca-header-shape-ii,
     .ca-header-shape-iii,
