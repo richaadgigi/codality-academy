@@ -30,7 +30,7 @@ const Index = () => {
             </div>
         </section>
         <section className='xui-container xui-py-3 xui-lg-py-6'>
-            <div className='xui-d-grid xui-grid-col-1 xui-lg-grid-col-2 xui-lg-grid-gap-4'>
+            <div className='xui-d-grid xui-grid-col-1 xui-lg-grid-col-2 xui-lg-grid-gap-4 xui-flex-ai-center'>
                 <div>
                     <h2 className='xui-font-sz-250 xui-md-font-sz-350 xui-lg-font-sz-350 xui-font-w-700'>We can reimburse you if something’s not right.</h2>
                     <p className='xui-font-sz-100 xui-lg-font-sz-110 xui-opacity-6  xui-line-height-2 xui-lg-line-height-2-half xui-mt-2'>Join SuperHi with 50,00050,000+ learners worldwide and gain technical skills through our practical courses</p>
@@ -38,6 +38,9 @@ const Index = () => {
                         <span className='ca-animated xui-font-sz-100'>See our catalog</span>
                         <ArrowRight size={20} />
                     </Link>
+                </div>
+                <div className='xui-mt-2 xui-lg-mt-none'>
+                    <img className='xui-img-400 xui-mx-auto' src="https://images.pexels.com/photos/5081971/pexels-photo-5081971.jpeg?auto=compress&cs=tinysrgb&w=600" alt="picture of someone learning online" />
                 </div>
             </div>
         </section>

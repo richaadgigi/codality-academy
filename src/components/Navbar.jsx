@@ -1,7 +1,8 @@
-import { Menu, ShoppingCart } from '@carbon/icons-react';
+import { Menu } from '@carbon/icons-react';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import NavbarLinks from './NavbarLinks';
+import CartIcon from './CartIcon';
 
 const Navbar = () => {
     const [ isActive, setIsActive ] = useState(false);
@@ -14,10 +15,7 @@ const Navbar = () => {
             <div className='links xui-d-flex xui-flex-ai-center xui-flex-jc-flex-end xui-md-flex-jc-space-between'>
                 <NavbarLinks />
                 <div className='fixed xui-d-flex xui-flex-ai-center xui-grid-gap-1-half'>
-                    <Link className='cart' to={'/'}>
-                        <ShoppingCart size={24} />
-                        <div className='cart-number xui-d-inline-flex xui-flex-ai-center xui-flex-jc-center'>2</div>
-                    </Link>
+                    <CartIcon />
                     <Link className='action-btn xui-d-none xui-md-d-inline-block' to={'/'}>Get Started</Link>
                     <button onClick={() => setIsActive(!isActive)} className='action-btn xui-cursor-pointer xui-d-inline-block xui-md-d-none' to={'/'}>
                         <Menu size={24} />
