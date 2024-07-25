@@ -1,11 +1,24 @@
 import { Menu } from '@carbon/icons-react';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import NavbarLinks from './NavbarLinks';
 import CartIcon from './CartIcon';
 
 const Navbar = () => {
     const [ isActive, setIsActive ] = useState(false);
+    useEffect(() => {
+        document.onclick = function(event) {
+            // Get the clicked element
+            const clickedElement = event.target;
+        
+            // Check if the clicked element is an <a> tag with an href attribute
+            if (clickedElement.tagName === 'A' && clickedElement.hasAttribute('href')) {
+                // Remove the class from the <a> element
+                // clickedElement.classList.remove('your-class-name');
+                setIsActive(false);
+            }
+        };
+    }, []);
     return (
         <>
         <nav className='ca-navbar xui-d-inline-flex xui-flex-ai-center xui-flex-jc-space-between xui-box-shadow xui-p-1 xui-lg-p-1-half'>

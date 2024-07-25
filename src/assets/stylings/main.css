@@ -4,13 +4,15 @@
     --purple: #8E04D4;
     --purple-light: #F5E1FE;
     --purple-dark: hsl(281, 94%, 16%);
+    --dark-mode: hsl(281, 94%, 4%);
     --pink: #E300FE;
     --pink-light: #FDEBFF;
     --white: #FFFFFF;
 }
 body {
     overflow-x: hidden;
-    background-color: #F8EBFF;
+    background-color: hsl(279, 100%, 98%);
+    transition: .24s;
 }
 .ca-gradient-i {
     background: rgb(193,19,247);
@@ -254,6 +256,13 @@ body .main {
 }
 .ca-navbar .main {
     visibility: visible;
+}
+.ca-transition {
+    transition: .2s;
+}
+.ca-dark-mode {
+    background-color: var(--dark-mode);
+    color: var(--pink-light);
 }
 /* Media Queries */
 @media screen and (max-width: 913px) {
