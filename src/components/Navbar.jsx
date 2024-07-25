@@ -13,8 +13,6 @@ const Navbar = () => {
         
             // Check if the clicked element is an <a> tag with an href attribute
             if (clickedElement.tagName === 'A' && clickedElement.hasAttribute('href')) {
-                // Remove the class from the <a> element
-                // clickedElement.classList.remove('your-class-name');
                 setIsActive(false);
             }
         };

@@ -5,6 +5,7 @@ import { useGSAP } from '@gsap/react';
 import AboutDarkMode from '../components/AboutDarkMode';
 import HWDBox from '../components/HWDBox';
 import JoinTheCommunity from '../components/JoinTheCommunity';
+import { MachineLearning } from '@carbon/icons-react';
 gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
@@ -42,11 +43,12 @@ const About = () => {
                 <h2 className='xui-font-sz-250 xui-md-font-sz-350 xui-lg-font-sz-350 xui-font-w-700 xui-lg-w-fluid-80 xui-mx-auto'>How we do it</h2>
                 <p className='xui-font-sz-100 xui-lg-font-sz-105 xui-opacity-6 xui- xui-mx-auto xui-lg-w-fluid-60 xui-line-height-2 xui-lg-line-height-2'>At our school, we believe that education should be more than just memorizing facts and figures. It should be a transformative experience that prepares you for success in the tech industry.</p>
             </div>
-            <div className='xui-d-grid xui-grid-col-1 xui-lg-grid-col-2 xui-grid-gap-1-half xui-lg-grid-gap-2 xui-mt-2'>
-                <HWDBox />
-                <HWDBox />
-                <HWDBox />
-                <HWDBox />
+            <div className='xui-d-grid xui-grid-col-1 xui-lg-grid-col-3 xui-grid-gap-1-half xui-lg-grid-gap-2 xui-mt-2 xui-lg-mt-4'>
+                <HWDBox icon={<MachineLearning size={28} />} heading={'Project-based learning'} text={`We believe that the best way to learn is by doing. That's why we use a project-based approach to learning, where you get to work on real-world projects that simulate the challenges you’ll face in the tech industry. This approach will help you develop critical thinking and problem-solving skills, as well as the ability to work collaboratively in a team.`} />
+                <HWDBox icon={<MachineLearning size={28} />} heading={'Industry-related curriculum'} text={`Our curriculum is designed with input from industry experts, ensuring that you learn the skills and technologies that are most in-demand in the tech industry. We also regularly update our curriculum to keep up with the latest trends and technologies.`} />
+                <HWDBox icon={<MachineLearning size={28} />} heading={'Experienced Instructors'} text={`Our instructors are not only experts in their field, but they also have real-world experience working in the tech industry. This means that they can provide you with practical insights and advice on how to succeed in the industry.`} />
+                <HWDBox icon={<MachineLearning size={28} />} heading={'Supportive learning environment'} text={`We believe that learning is most effective in a supportive and collaborative environment. Our school fosters a culture of inclusivity and diversity, where you can feel comfortable expressing your ideas and work together to achieve your set goals.`} />
+                <HWDBox icon={<MachineLearning size={28} />} heading={'Career services'} text={`Our commitment to you doesn't end when you graduate. We provide career services to help you find internships, job opportunities, and networking events. We also offer alumni support to help you succeed in your different careers.`} />
             </div>
         </section>
         <JoinTheCommunity />
