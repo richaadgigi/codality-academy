@@ -253,6 +253,10 @@ swiper-slide {
 }
 body .main {
     visibility: hidden;
+    display: none;
+}
+.ca-navbar .main {
+    display: inline-flex;
 }
 .ca-navbar .main {
     visibility: visible;
@@ -309,6 +313,7 @@ body .main {
         display: none;
     } 
     .sidebar.main {
+        display: flex;
         padding: 136px 20px 32px 20px;
         margin: 0;
         transition: .2s;

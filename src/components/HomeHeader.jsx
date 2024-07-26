@@ -48,7 +48,7 @@ const HomeHeader = (props) => {
             <div ref={shapeIV} className='ca-header-shape-iv'></div>
             <div className='xui-text-center'>
                 {notfound ? <>
-                <h1 className='xui-font-sz-250 xui-md-font-sz-350 xui-lg-font-sz-500 xui-mt-4 xui-lg-mt-none xui-mx-auto xui-lg-w-fluid-70 xui-font-w-700'>This page seems to be undefined</h1>
+                <h1 className='xui-font-sz-250 xui-md-font-sz-350 xui-lg-font-sz-500 xui-mt-4 xui-lg-mt-4 xui-mx-auto xui-lg-w-fluid-70 xui-font-w-700'>This page seems to be undefined</h1>
                 <p className='xui-font-sz-100 xui-lg-font-sz-110 xui-opacity-6 xui- xui-mx-auto xui-w-fluid-80 xui-lg-w-fluid-50 xui-line-height-2 xui-lg-line-height-2-half'>Sorry, we can't find that page! Don't worry though, everything is STILL AWESOME!</p>
                 <div className='xui-d-flex xui-flex-ai-center xui-flex-jc-center xui-grid-gap-1 xui-lg-w-fluid-80 xui-mx-auto xui-mt-2'>
                     <Link className='ca-btn xui-btn xui-btn-black xui-d-inline-flex xui-flex-ai-center xui-grid-gap-half xui-bdr-rad-2' to={'/'}>
@@ -56,7 +56,7 @@ const HomeHeader = (props) => {
                     </Link>
                 </div>
                 </> : <>
-                <h1 className='xui-font-sz-250 xui-md-font-sz-350 xui-lg-font-sz-500 xui-mt-4 xui-lg-mt-none xui-mx-auto xui-lg-w-fluid-70 xui-font-w-700'>Curate your own creative career</h1>
+                <h1 className='xui-font-sz-250 xui-md-font-sz-350 xui-lg-font-sz-500 xui-mt-4 xui-lg-mt-4 xui-mx-auto xui-lg-w-fluid-70 xui-font-w-700'>Curate your own creative career</h1>
                 <p className='xui-font-sz-100 xui-lg-font-sz-110 xui-opacity-6 xui- xui-mx-auto xui-w-fluid-80 xui-lg-w-fluid-50 xui-line-height-2 xui-lg-line-height-2-half'>Join SuperHi with 50,00050,000+ learners worldwide and gain technical skills through our practical courses</p>
                 <div className='xui-d-flex xui-flex-ai-center xui-flex-jc-center xui-grid-gap-1 xui-lg-w-fluid-80 xui-mx-auto xui-mt-2'>
                     <Link className='ca-btn xui-btn ca-bg-purple xui-text-white xui-d-inline-flex xui-flex-ai-center xui-grid-gap-half xui-bdr-rad-2' to={'/'}>

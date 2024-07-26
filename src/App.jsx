@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import About from './pages/About';
+import Programs from './pages/Programs';
 
 const App = () => {
     return (
@@ -15,8 +16,9 @@ const App = () => {
             <Navbar />
             <ScrollToTop />
             <Routes>
-                <Route index path='/' element={<Index />} />
+                <Route path='/' element={<Index />} index />
                 <Route path='/about' element={<About />} />
+                <Route path='/programs' element={<Programs />} />
                 <Route path='*' element={<NotFound />} />
             </Routes>
             <Footer />
