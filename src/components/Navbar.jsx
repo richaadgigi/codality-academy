@@ -27,7 +27,7 @@ const Navbar = () => {
                 <NavbarLinks />
                 <div className='fixed xui-d-flex xui-flex-ai-center xui-grid-gap-1-half'>
                     <CartIcon />
-                    <Link className='action-btn xui-d-none xui-md-d-inline-block' to={'/'}>Get Started</Link>
+                    <Link className='action-btn xui-d-none xui-md-d-inline-block' to={'/login'}>Get Started</Link>
                     <button onClick={() => setIsActive(!isActive)} className='action-btn xui-cursor-pointer xui-d-inline-block xui-md-d-none' to={'/'}>
                         <Menu size={24} />
                     </button>

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const CartIcon = () => {
     return (
-        <Link className='cart' to={'/'}>
+        <Link className='cart' to={'/cart'}>
             <ShoppingCart size={24} />
             <div className='cart-number xui-d-inline-flex xui-flex-ai-center xui-flex-jc-center'>0</div>
         </Link>
