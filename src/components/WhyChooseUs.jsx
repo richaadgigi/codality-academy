@@ -15,33 +15,39 @@ const WhyChooseUs = () => {
             scrollTrigger: {
                 trigger: whyChouseUsSection.current,
                 start: "bottom bottom", // Start when the top of the trigger element reaches the top of the viewport
-                end: "bottom+=20% bottom-=30%", // End when the bottom of the trigger element reaches the top of the viewport
-                scrub: 1.2,
+                end: "bottom+=50% bottom-=30%", // Extend the end point to make the scroll last longer
+                scrub: 2, // Increase scrub value to smooth out the scroll
                 markers: false,
                 pin: true
             }
         });
-
+    
         tl.to(setUpForWork.current, {
             filter: "blur(4px)",
             scale: 0.92,
+            duration: 4 // Increase duration to make this animation last longer
         })
         .to(qualification.current, {
             bottom: "0",
+            duration: 4 // Increase duration to make this animation last longer
         }, "<") // "<" makes this animation start at the same time as the previous one
         .to(target.current, {
             bottom: "0",
+            duration: 4 // Increase duration to make this animation last longer
         })
         .to(qualification.current, {
             filter: "blur(4px)",
             scale: 0.92,
+            duration: 4 // Increase duration to make this animation last longer
         }, "<")
         .to(certification.current, {
             bottom: "0",
+            duration: 4 // Increase duration to make this animation last longer
         })
         .to(target.current, {
             filter: "blur(4px)",
             scale: 0.92,
+            duration: 4 // Increase duration to make this animation last longer
         }, "<"); // This animation also starts at the same time as the previous one
     });
     return (

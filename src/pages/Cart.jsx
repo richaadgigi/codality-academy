@@ -1,5 +1,6 @@
 import React from 'react';
 import CartItem from '../components/CartItem';
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
     return (
@@ -7,6 +8,13 @@ const Cart = () => {
         <section className='xui-container xui-py-5 xui-lg-py-8 ca-bg-dark-purple xui-text-white xui-pos-relative'>
             <h1 className='xui-font-sz-250 xui-md-font-sz-350 xui-lg-font-sz-400 xui-mt-4 xui-lg-mt-4 xui-lg-w-fluid-70 xui-font-w-700'>Cart</h1>
             <p className='xui-font-sz-100 xui-lg-font-sz-110 xui-opacity-6 xui-w-fluid-80 xui-lg-w-fluid-70 xui-line-height-2 xui-lg-line-height-2-half'>Welcome to Jupita Academy, where innovation meets education in the dynamic world of technology. At Jupita Academy, we are passionate about empowering individuals with the skills and knowledge needed to thrive in the digital era.</p>
+        </section>
+        <section className='xui-container xui-py-3 xui-lg-py-4 xui-bg-white'>
+            <div className='xui-text-center'>
+                <img src="https://img.freepik.com/free-vector/empty-shopping-basket-concept-illustration_114360-17072.jpg?t=st=1722583882~exp=1722587482~hmac=3871dc4b4ac9ff2a311bc0af8f9bbcad9ed8e459973f7014da17fcb1f967315f&w=826" alt="empty cart" className="xui-mx-auto xui-img-200 xui-md-img-250" />
+                <p className='xui-opacity-8 xui-mt-1'>Your cart is empty</p>
+                <Link to={'/programs'} className='xui-btn ca-bg-purple xui-text-white xui-mt-2 xui-bdr-rad-2 xui-font-sz-90'>See our programs</Link>
+            </div>
         </section>
         <section className='xui-container xui-py-3 xui-lg-py-4 xui-bg-white'>
             <div className='xui-row'>

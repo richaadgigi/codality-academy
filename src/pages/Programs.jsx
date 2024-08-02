@@ -12,6 +12,7 @@ const Programs = () => {
         <section className='xui-container xui-py-3 xui-lg-py-4'>
             <div className='xui-d-grid xui-grid-col-1 xui-lg-grid-col-3 xui-grid-gap-2'>
                 <ProgramCard />
+                <ProgramCard bought={true} />
             </div>
         </section>
         </>
