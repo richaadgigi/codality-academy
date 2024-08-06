@@ -302,6 +302,10 @@ body .main {
     position: sticky;
     top: 100px;
 }
+.ca-btn-disabled,
+.ca-btn-disabled:hover {
+    opacity: .4;
+}
 /* Media Queries */
 @media screen and (max-width: 913px) {
     .ca-header-section {

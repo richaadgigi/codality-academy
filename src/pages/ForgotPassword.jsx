@@ -18,7 +18,7 @@ const ForgotPassword = () => {
                         </div>
                         <div className='xui-form-box xui-text-center'>
                             <button className='xui-btn xui-btn-block ca-bg-purple xui-text-white xui-bdr-rad-2'>Forgot password</button>
-                            <span className='xui-font-sz-80 xui-d-inline-block xui-mt-1'><Link className='xui-font-w-500 ca-text-purple' to={'/login'}>Back to login</Link></span>
+                            <span className='xui-font-sz-85 xui-d-inline-block xui-mt-1'><Link className='xui-font-w-500 ca-text-purple' to={'/login'}>Back to login</Link></span>
                         </div>
                     </form>
                 </div>
