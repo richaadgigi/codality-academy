@@ -206,7 +206,7 @@ swiper-slide {
     position: fixed;
     top: 20px;
     left: 20px;
-    z-index: 10;
+    z-index: 2000;
     -webkit-backdrop-filter: blur(16px);
     -o-backdrop-filter: blur(16px);
     -moz-backdrop-filter: blur(16px);
@@ -305,6 +305,14 @@ body .main {
 .ca-btn-disabled,
 .ca-btn-disabled:hover {
     opacity: .4;
+}
+.ca-cart-item .ca-cart-remove {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    border-radius: 50%;
 }
 /* Media Queries */
 @media screen and (max-width: 913px) {

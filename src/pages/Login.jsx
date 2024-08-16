@@ -39,7 +39,7 @@ const Login = () => {
             setErrMsg(error.response.status === 422 ? error.response.data.data[0].msg : error.response.data.message);
             setTimeout(() => {
                 setErrMsg(null);
-            }, 4000);
+            }, 2800);
         });
     }
     return (
@@ -88,7 +88,7 @@ const Login = () => {
                 </div>
             </div>
         </section>
-        <Error message={errMsg} />
+        <Error name={'loginErrorAlert'} message={errMsg} />
         </>
     );
 };
