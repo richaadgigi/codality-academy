@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import axios from 'axios';
 import { API_URL } from "../../globals.json";
+import Loading from './Loading';
 
 const Protected = (props) => {
     const { children, redirect } = props;
@@ -44,7 +45,7 @@ const Protected = (props) => {
     }, [redirect]);
     return (
         <>
-        {isObjectEmpty(user) ? <><h1>Hello</h1></> : children}
+        {isObjectEmpty(user) ? <><Loading /></> : children}
         </>
     );
 };

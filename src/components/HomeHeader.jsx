@@ -7,7 +7,7 @@ import { useGSAP } from '@gsap/react';
 gsap.registerPlugin(ScrollTrigger);
 
 const HomeHeader = (props) => {
-    const { notfound } = props;
+    const { notfound, loading } = props;
     const headerSection = useRef(null);
     const shapeI = useRef(null);
     const shapeII = useRef(null);
@@ -47,7 +47,7 @@ const HomeHeader = (props) => {
             <div ref={shapeIII} className='ca-header-shape-iii'></div>
             <div ref={shapeIV} className='ca-header-shape-iv'></div>
             <div className='xui-text-center'>
-                {notfound ? <>
+                {notfound ? (!loading ? <>
                 <h1 className='xui-font-sz-250 xui-md-font-sz-350 xui-lg-font-sz-500 xui-mt-4 xui-lg-mt-4 xui-mx-auto xui-lg-w-fluid-70 xui-font-w-700'>This page seems to be undefined</h1>
                 <p className='xui-font-sz-100 xui-lg-font-sz-110 xui-opacity-6 xui- xui-mx-auto xui-w-fluid-80 xui-lg-w-fluid-50 xui-line-height-2 xui-lg-line-height-2-half'>Sorry, we can't find that page! Don't worry though, everything is STILL AWESOME!</p>
                 <div className='xui-d-flex xui-flex-ai-center xui-flex-jc-center xui-grid-gap-1 xui-lg-w-fluid-80 xui-mx-auto xui-mt-2'>
@@ -56,6 +56,9 @@ const HomeHeader = (props) => {
                     </Link>
                 </div>
                 </> : <>
+                <h1 className='xui-font-sz-250 xui-md-font-sz-350 xui-lg-font-sz-500 xui-mt-4 xui-lg-mt-4 xui-mx-auto xui-lg-w-fluid-70 xui-font-w-700'>Please wait...</h1>
+                <p className='xui-font-sz-100 xui-lg-font-sz-110 xui-opacity-6 xui- xui-mx-auto xui-w-fluid-80 xui-lg-w-fluid-50 xui-line-height-2 xui-lg-line-height-2-half'>We're getting this page ready for you</p>
+                </>) : <>
                 <h1 className='xui-font-sz-250 xui-md-font-sz-350 xui-lg-font-sz-500 xui-mt-4 xui-lg-mt-4 xui-mx-auto xui-lg-w-fluid-70 xui-font-w-700'>Curate your own creative career</h1>
                 <p className='xui-font-sz-100 xui-lg-font-sz-110 xui-opacity-6 xui- xui-mx-auto xui-w-fluid-80 xui-lg-w-fluid-50 xui-line-height-2 xui-lg-line-height-2-half'>Join SuperHi with 50,00050,000+ learners worldwide and gain technical skills through our practical courses</p>
                 <div className='xui-d-flex xui-flex-ai-center xui-flex-jc-center xui-grid-gap-1 xui-lg-w-fluid-80 xui-mx-auto xui-mt-2'>

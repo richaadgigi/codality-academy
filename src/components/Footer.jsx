@@ -4,7 +4,7 @@ import FooterHeading from './FooterHeading';
 
 const Footer = () => {
     return (
-        <footer className=''>
+        <footer className='xui-pos-relative xui-z-index-1'>
             <div className='xui-container xui-row xui-py-3 xui-lg-py-4 ca-bg-light-purple'>
                 <div className='xui-col-12 xui-lg-col-4 xui-lg-pr-2'>
                     <img className='xui-img-150' src="https://res.cloudinary.com/xnyder/image/upload/v1721748502/ca/brand/CODALITY_12_xvdzw0.png" alt="logo brand" />
