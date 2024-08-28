@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import ProgramCard from '../components/ProgramCard';
 import axios from 'axios';
 import ProgramCardSkeleton from '../components/skeletons/ProgramCardSkeleton';
+import { API_URL } from "../../globals.json";
 
 const Programs = () => {
     const [hideSkeletal, setHideSkeletal ] = useState(false);
@@ -10,7 +11,7 @@ const Programs = () => {
     const getAllPrograms = () => {
         axios({
             method: "GET",
-            url: `${import.meta.env.VITE_API_URL}/public/courses`
+            url: `${API_URL}/public/courses`
         })
         .then((response) => {
             setProgrammes(response.data.data.rows);

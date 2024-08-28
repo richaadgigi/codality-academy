@@ -1,136 +1,169 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import CartItem from '../components/CartItem';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { usePaystackPayment } from "react-paystack";
+import { API_URL, INTERNAL_KEY } from "../../globals.json";
+import axios from 'axios';
+import Error from '../components/alerts/Error';
+import Success from '../components/alerts/Success';
+import GeneralContext from '../components/GeneralContext';
 
 const Cart = () => {
+    const { user } = useContext(GeneralContext);
     const cartCookie = Cookies.get('cartItems', {path: '/'});
-    const [ cartItems, setCartItems ] = useState(null);
-    const generateUniqueNumbersWithDate = (count) => {
-        const uniqueNumbers = new Set();
+    const userCookie = Cookies.get('signedInUser');
+    const [ cartItems, setCartItems ] = useState([]);
+    const [ isDisabled, setIsDisabled ] = useState(false);
+    const [ errMsg, setErrMsg ] = useState(null);
+    const [ successMsg, setSuccessMsg ] = useState(null);
+    const generateUniqueNumberWithDate = () => {
         const currentDate = new Date().toISOString().replace(/[-:.TZ]/g, ''); // Remove date delimiters for uniqueness
-    
-        while (uniqueNumbers.size < count) {
-            const randomNum = Math.floor(Math.random() * 10000); // Generate random number between 0 and 9999
-            const uniqueNum = `${currentDate}${randomNum}`;
-            uniqueNumbers.add(uniqueNum);
-        }
-    
-        return Array.from(uniqueNumbers);
+        const randomNum = Math.floor(Math.random() * 10000); // Generate random number between 0 and 9999
+        const uniqueNum = `${currentDate}${randomNum}`;
+        return uniqueNum;
     }
+    const generatedReference = generateUniqueNumberWithDate();
+    const cartAmount = Number(cartItems.reduce((sum, item) => sum + item.amount, 0));
     const paystackConfig = {
-        reference: generateUniqueNumbersWithDate(12),
-        email: `gigirichardofficial@gmail.com`,
-        amount: Number(cartItems.reduce((sum, item) => sum + item.amount, 0)) * 100, //Amount is in the country's lowest currency. E.g Kobo, so 20000 kobo = N200
         publicKey: import.meta.env.VITE_PAYSTACK_PUBLIC_API_KEY_TEST,
+    }
+    const [ config, setConfig ] = useState(paystackConfig);
+    const navigate = useNavigate();
+    const cancelPayment = (ref, runFunc) => {
+        axios({
+            method: 'PUT',
+            url: `${API_URL}/cancel/payments/via/reference`,
+            headers: {
+                "codality-access-key": INTERNAL_KEY,
+                "codality-access-token": JSON.parse(userCookie).token
+            },
+            data: {
+                "reference": ref
+            }
+        })
+        .then((res) => {
+            setIsDisabled(false);
+            if(runFunc){
+                payForOrder();
+            }
+        }, (err) => {
+            setIsDisabled(false);
+            setErrMsg(err.response.data.message);
+            window.xuiAnimeStart('cartErrorAlert');
+            setTimeout(() => {
+                window.xuiAnimeEnd('cartErrorAlert');
+            }, 3200);
+        });
     }
     // you can call this function anything
     const onSuccess = (reference) => {
         // Implementation for whatever you want to do with reference and after success call.
-        console.log(reference);
         makePayment();
     };
-
     // you can call this function anything
     const onClose = () => {
         // implementation for  whatever you want to do when the Paystack dialog closed.
-        axios({
-            method: 'POST',
-            url: `${APIURL}/user/order/cancel/via/tracking`,
-            headers: {
-                "hydra-express-access-key": INTERNAL_KEY,
-                "hydra-express-access-token": JSON.parse(userCookie)
-            },
-            data: {
-                "tracking_number": Cookies.get('cart_tracking')
-            }
-        })
-        .then((res) => {
-            Cookies.remove('cart_tracking');
-            setSuccessMsg(res.data.message);
-            window.xuiAnimeStart('successAlert');
-            setTimeout(() => {
-                setSuccessMsg('Redirecting you to your orders...');
-                setTimeout(() => {
-                    navigate('/account/orders');
-                }, 1000);
-            }, 2800);
-        }, (err) => {
-            setIsDisabled(false);
-            setErrorMsg(err.response.data.message);
-            window.xuiAnimeStart('errorAlert');
-            setTimeout(() => {
-                setErrorMsg('Redirecting you to your orders...');
-                setTimeout(() => {
-                    navigate('/account/orders');
-                }, 1000);
-            }, 2500);
-        });
+        cancelPayment(generatedReference);
     }
-    const initializePayment = usePaystackPayment(paystackConfig);
-    const makePayment = () => {
+    const payForOrder = () => {
         setIsDisabled(true);
         axios({
             method: "POST",
-            url: `${APIURL}/user/order/pay`,
+            url: `${API_URL}/add/multiple/payments`,
             data: {
-                "tracking_number": Cookies.get('cart_tracking')
+                "gateway": "PAYSTACK",
+                "courses": cartItems.map(item => item.unique_id),
+                "reference": generatedReference
             },
             headers: {
-                "hydra-express-access-key": INTERNAL_KEY,
-                "hydra-express-access-token": JSON.parse(userCookie)
+                "codality-access-token": JSON.parse(userCookie).token
             }
         })
         .then((res) => {
-            Cookies.remove('cart_tracking');
-            setSuccessMsg(res.data.message);
-            window.xuiAnimeStart('successAlert');
-            setTimeout(() => {
-                setSuccessMsg('Redirecting you to your orders...');
+            setConfig({...config, "email": user.email, "amount": cartAmount * 100, "reference": generatedReference});
+        })
+        .catch((err) => {
+            if(err.response.status === 400){
+                
+            } else {
+                setIsDisabled(false);
+                setErrMsg(err.response.data.message);
+                window.xuiAnimeStart('cartErrorAlert');
                 setTimeout(() => {
-                    navigate('/account/orders');
-                }, 1000);
-            }, 2800);
-        }, (err) => {
-            setIsDisabled(false);
-            setErrorMsg(err.response.data.message);
-            window.xuiAnimeStart('errorAlert');
-            setTimeout(() => {
-                setErrorMsg('Redirecting you to your orders...');
-                setTimeout(() => {
-                    navigate('/account/orders');
-                }, 1000);
-            }, 2500);
+                    window.xuiAnimeEnd('cartErrorAlert');
+                }, 3200);
+            }
         });
     }
-    const payForOrder = () => {
-        if(products[0].payment_method === 'Wallet'){
-            if(user.balance != null && user.balance >= totalAmount){
-                makePayment();
-            } else {
-                setErrorMsg('Insufficient wallet balance');
-                window.xuiAnimeStart('errorAlert');
-                setTimeout(() => {
-                    setErrorMsg('Redirecting you to your orders...');
-                    setTimeout(() => {
-                        navigate('/account/orders');
-                    }, 1000);
-                }, 2500);
+    const runProperChecks = () => {
+        getPayments();
+    }
+    const getPayments = () => {
+        setIsDisabled(true);
+        axios({
+            method: "GET",
+            url: `${API_URL}/payments/via/payment_status?payment_status=Processing`,
+            headers: {
+                "codality-access-token": JSON.parse(userCookie).token
             }
-        } else {
-            initializePayment(onSuccess, onClose);
-        }
+        })
+        .then((res) => {
+            console.log(res.data.data.rows.length);
+            
+            if(res.data.data.rows.length > 0){
+                cancelPayment(res.data.data.rows[0].reference, true);
+            } else {
+                payForOrder();
+            }
+        })
+        .catch((err) => {
+            setIsDisabled(false);
+        });
+    }
+    const initializePayment = usePaystackPayment(config);
+    const makePayment = () => {
+        setIsDisabled(true);
+        setSuccessMsg("Setting things up...");
+        window.xuiAnimeStart('cartSuccessAlert');
+        axios({
+            method: "PUT",
+            url: `${API_URL}/complete/payments`,
+            data: {
+                "reference": config.reference
+            },
+            headers: {
+                "codality-access-key": INTERNAL_KEY,
+                "codality-access-token": JSON.parse(userCookie).token
+            }
+        })
+        .then((res) => {
+            Cookies.remove('cartItems');
+            setTimeout(() => {
+                navigate('/my-dashboard');
+                window.xuiAnimeEnd('cartSuccessAlert');
+            }, 3200);
+            
+        }, (err) => {
+            setIsDisabled(false);
+            setErrMsg(err.response.data.message);
+            window.xuiAnimeStart('cartErrorAlert');
+            setTimeout(() => {
+                window.xuiAnimeEnd('cartErrorAlert');
+            }, 3200);
+        });
     }
     useEffect(() => {
         if(cartCookie){
             setCartItems(JSON.parse(cartCookie));
-            console.log();
-            
         } else {
             setCartItems([]);
         }
     }, []);
+    useEffect(() => {
+        // Loading Paystack
+        initializePayment(onSuccess, onClose);
+    }, [config]);
     const removeObjectById = (arr, uniqueId) => {
         const newCartItems = arr.filter(obj => obj.unique_id !== uniqueId);
         setCartItems(newCartItems);
@@ -151,7 +184,7 @@ const Cart = () => {
         </section>}
         {cartItems && cartItems.length > 0 && <section className='xui-container xui-py-3 xui-lg-py-4 xui-bg-white'>
             <div className='xui-row'>
-                <div className='xui-col-12 xui-lg-col-7 xui-d-grid xui-grid-col-1 xui-grid-gap-4'>
+                <div className='xui-col-12 xui-lg-col-7 xui-d-grid xui-grid-col-1 xui-grid-gap-3'>
                     {cartItems.map(item => (
                         <React.Fragment key={item.unique_id}>
                             <CartItem obj={item} onClick={() => removeObjectById(cartItems, item.unique_id)} />
@@ -170,13 +203,16 @@ const Cart = () => {
                         <div className='xui-my-2 xui-d-flex xui-flex-ai-center xui-grid-gap-1'>
                             <img className='xui-img-30' src="https://www.svgrepo.com/show/328127/visa.svg" alt="visa" />
                             <img className='xui-img-30' src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1200px-Mastercard-logo.svg.png" alt="masterlogo" />
-                            <img className='xui-img-20' src="https://static-00.iconduck.com/assets.00/paystack-icon-512x504-w7v8l6as.png" alt="paystack" />
+                            <img className='xui-img-40' src="https://nigerialogos.com/logos/verve/verve.svg" alt="masterlogo" />
+                            <img className='xui-img-20' src="https://nigerialogos.com/logos/paystack/paystack.svg" alt="paystack" />
                         </div>
-                        <button className='xui-btn-block ca-bg-purple xui-text-white xui-bdr-rad-2 xui-font-sz-90 xui-font-w-600'>Pay NGN {Number(cartItems.reduce((sum, item) => sum + item.amount, 0)).toLocaleString()}</button>
+                        <button onClick={runProperChecks} className={'xui-btn-block ca-bg-purple xui-text-white xui-bdr-rad-2 xui-font-sz-90 xui-font-w-600 ' + (isDisabled && 'ca-btn-disabled')} disabled={isDisabled}>Pay NGN {Number(cartItems.reduce((sum, item) => sum + item.amount, 0)).toLocaleString()}</button>
                     </div>
                 </div>
             </div>
         </section>}
+        <Error name={'cartErrorAlert'} message={errMsg} />
+        <Success name={'cartSuccessAlert'} message={successMsg} />
         </>
     );
 };

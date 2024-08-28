@@ -7,6 +7,7 @@ import 'react-phone-number-input/style.css';
 import axios from 'axios';
 import Error from '../components/alerts/Error';
 import Cookies from 'js-cookie';
+import { API_URL } from "../../globals.json";
 
 const Register = () => {
     const [ buttonTxt, setButtonTxt ] = useState('Create account');
@@ -29,7 +30,7 @@ const Register = () => {
         setButtonTxt('Please wait...');
         axios({
             method: "POST",
-            url: `${import.meta.env.VITE_API_URL}/auth/signup`,
+            url: `${API_URL}/auth/signup`,
             data: {...fields, method: "Email", confirmPassword: fields.password}
         })
         .then((response) => {

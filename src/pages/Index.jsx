@@ -35,7 +35,7 @@ const Index = () => {
                 <div>
                     <h2 className='xui-font-sz-250 xui-md-font-sz-350 xui-lg-font-sz-350 xui-font-w-700'>We can reimburse you if something’s not right.</h2>
                     <p className='xui-font-sz-100 xui-lg-font-sz-110 xui-opacity-6  xui-line-height-2 xui-lg-line-height-2-half xui-mt-2'>Join SuperHi with 50,00050,000+ learners worldwide and gain technical skills through our practical courses</p>
-                    <Link className='ca-btn xui-btn ca-bg-blue xui-text-white xui-d-inline-flex xui-flex-ai-center xui-grid-gap-half xui-bdr-rad-2 xui-mt-2' to={'/'}>
+                    <Link className='ca-btn xui-btn ca-bg-blue xui-text-white xui-d-inline-flex xui-flex-ai-center xui-grid-gap-half xui-bdr-rad-2 xui-mt-2' to={'/programs'}>
                         <span className='ca-animated xui-font-sz-100'>See our catalog</span>
                         <ArrowRight size={20} />
                     </Link>

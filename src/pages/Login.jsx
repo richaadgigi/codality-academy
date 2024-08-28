@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Error from '../components/alerts/Error';
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import { API_URL } from "../../globals.json";
 
 const Login = () => {
     const { register, handleSubmit, formState: {errors} } = useForm();
@@ -20,7 +21,7 @@ const Login = () => {
         setButtonTxt('Please wait...');
         axios({
             method: "POST",
-            url: `${import.meta.env.VITE_API_URL}/auth/signin/email`,
+            url: `${API_URL}/auth/signin/email`,
             data: {...fields}
         })
         .then((response) => {

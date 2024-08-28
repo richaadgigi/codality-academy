@@ -14,6 +14,7 @@ import ForgotPassword from './pages/ForgotPassword';
 import Cart from './pages/Cart';
 import Verify from './pages/Verify';
 import MyDashboard from './pages/MyDashboard';
+import Protected from './components/Protected';
 
 const App = () => {
     return (
@@ -25,12 +26,12 @@ const App = () => {
                 <Route path='/' element={<Index />} index />
                 <Route path='/about' element={<About />} />
                 <Route path='/programs' element={<Programs />} />
-                <Route path='/login' element={<Login />} />
+                <Route path='/login' element={<Protected redirect={true}><Login /></Protected>} />
                 <Route path='/register' element={<Register />} />
                 <Route path='/verify' element={<Verify />} />
                 <Route path='/forgot-password' element={<ForgotPassword />} />
-                <Route path='/cart' element={<Cart />} />
-                <Route path='/my-dashboard' element={<MyDashboard />} />
+                <Route path='/cart' element={<Protected><Cart /></Protected>} />
+                <Route path='/my-dashboard' element={<Protected><MyDashboard /></Protected>} />
                 <Route path='*' element={<NotFound />} />
             </Routes>
             <Footer />

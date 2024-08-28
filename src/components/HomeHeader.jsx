@@ -59,11 +59,11 @@ const HomeHeader = (props) => {
                 <h1 className='xui-font-sz-250 xui-md-font-sz-350 xui-lg-font-sz-500 xui-mt-4 xui-lg-mt-4 xui-mx-auto xui-lg-w-fluid-70 xui-font-w-700'>Curate your own creative career</h1>
                 <p className='xui-font-sz-100 xui-lg-font-sz-110 xui-opacity-6 xui- xui-mx-auto xui-w-fluid-80 xui-lg-w-fluid-50 xui-line-height-2 xui-lg-line-height-2-half'>Join SuperHi with 50,00050,000+ learners worldwide and gain technical skills through our practical courses</p>
                 <div className='xui-d-flex xui-flex-ai-center xui-flex-jc-center xui-grid-gap-1 xui-lg-w-fluid-80 xui-mx-auto xui-mt-2'>
-                    <Link className='ca-btn xui-btn ca-bg-purple xui-text-white xui-d-inline-flex xui-flex-ai-center xui-grid-gap-half xui-bdr-rad-2' to={'/'}>
+                    <Link className='ca-btn xui-btn ca-bg-purple xui-text-white xui-d-inline-flex xui-flex-ai-center xui-grid-gap-half xui-bdr-rad-2' to={'/programs'}>
                         <span className='ca-animated xui-font-sz-100'>See our catalog</span>
                         <ArrowRight size={20} />
                     </Link>
-                    <Link className='ca-btn xui-btn xui-btn-black xui-d-inline-flex xui-flex-ai-center xui-grid-gap-half xui-bdr-rad-2' to={'/'}>
+                    <Link className='ca-btn xui-btn xui-btn-black xui-d-inline-flex xui-flex-ai-center xui-grid-gap-half xui-bdr-rad-2' to={'/login'}>
                         <span className='xui-font-sz-100'>Get started now!</span>
                     </Link>
                 </div>
